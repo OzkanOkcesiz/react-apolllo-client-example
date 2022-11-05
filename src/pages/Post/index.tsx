@@ -5,6 +5,7 @@ import Loading from "../../components/Loading";
 import styles from "./styles.module.css"
 
 import { Image } from "antd";
+import Comments from "../../components/Comments";
 
 const Post = () => {
 
@@ -24,7 +25,6 @@ const Post = () => {
         return <div>Error:  {error.message} </div>
       }
 
-      console.log(data);
 
       const {post} = data
       
@@ -34,6 +34,7 @@ const Post = () => {
       <h2>{post.title}</h2>
       <Image src= {post.cover} />
       <div className={styles.description}> {post.description} </div>
+      <Comments postId={id} />
     </div>
   )
 }

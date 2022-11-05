@@ -10,3 +10,20 @@ query getPost ($id: ID!) {
   }
 }
 `;
+
+
+export const GET_POST_COMMENTS = gql`
+query getComments($id: ID!){
+ 	post(id: $id) {
+    comments {
+      id
+      text
+      user {
+        fullName
+        profile_photo
+      }
+    }
+  }
+}
+`;
+

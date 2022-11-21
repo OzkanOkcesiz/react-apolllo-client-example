@@ -5,6 +5,7 @@ import Home from '../../pages/Home';
 import NewPost from '../../pages/NewPost';
 import HeaderMenu from '../HeaderMenu';
 import Post from '../../pages/Post';
+import PostCounter from '../PostCounter';
 
 
 
@@ -13,7 +14,15 @@ function App() {
     <div className={styles.container}>
       <Row justify='center'>
         <Col span={14} className={styles.col} >
-          <HeaderMenu />
+
+          <Row>
+            <Col span={18}>
+              <HeaderMenu />
+            </Col>
+            <Col span={6}>
+              <PostCounter />
+            </Col>
+          </Row>
           <div className={styles.content}>
             <Routes>
               <Route path="*" element={<Home />} />

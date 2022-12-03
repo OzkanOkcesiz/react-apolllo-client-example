@@ -10,29 +10,31 @@ const Comments = ({ postId }: any) => {
         GET_POST_COMMENTS,
         { variables: { id: postId } }
     );
-    
+
     useEffect(() => {
 
-        if(!loading && called) {
+        if (!loading && called) {
             subscribeToMore({
                 document: COMMENTS_SUBSCRIPTIONS,
-                updateQuery: (prev, { subscriptionData}) => {
-                    if(!subscriptionData.data) return prev;
+                updateQuery: (prev, { subscriptionData }) => {
+                    if (!subscriptionData.data) return prev;
 
                     const newCommentItem = subscriptionData.data.commentCreated;
 
                     console.log(
-{                        post : {
-                            ...prev.post,
-                            coments: [...prev.post.comments, newCommentItem]
-                        }}
+                        {
+                            post: {
+                                ...prev.post,
+                                coments: [...prev.post.comments, newCommentItem]
+                            }
+                        }
                     );
-                    
+
 
                     return {
-                        post : {
+                        post: {
                             ...prev.post,
-                            coments: [...prev.post.comments, newCommentItem]
+                            comments: [...prev.post.comments, newCommentItem]
                         }
                     }
                 }
